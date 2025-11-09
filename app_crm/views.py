@@ -75,7 +75,10 @@ def delete_record(request, pk):
 def add_record(request):
     if request.user.is_authenticated:
         if request.method == 'POST':
+            #On recupere les informations envoyer par l'utilisateur
+            #FormRecord(request.POST)
             form = FormRecord(request.POST)
+            #form.is_valid(): on verifie si les informations envoyer par l'utilisateur son correct
             if form.is_valid():
                 form.save()
                 messages.success(request, 'Record Posté avec success')
